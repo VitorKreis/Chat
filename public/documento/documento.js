@@ -1,4 +1,4 @@
-import { EmitTexto, EmitirDocumento, emitir_ExcluirDocumento } from "../socker-front-index.js";
+import { EmitTexto, EmitirDocumento, emitir_ExcluirDocumento } from "../documento/socker-front.js";
 
 const parametros = new URLSearchParams(window.location.search);
 

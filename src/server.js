@@ -9,7 +9,7 @@ const app = express();
 const pastaAtual  = url.fileURLToPath(import.meta.url);
 const pastaPublic = path.join(pastaAtual, "../../", "public")
 
-import "./ConnectionDB.js"
+import "./DB/ConnectionDB.js"
 
 const serverHttp = http.createServer(app);
 

@@ -1,5 +1,5 @@
 import { ObterCookie } from "../utils/cookies.js";
-import { MessagemExcluir, WriteTexto } from "./documento.js";
+import { AutenticarUsuario, MessagemExcluir, WriteTexto, atualizarInterfaceUsuarios} from "./documento.js";
 
 const socket = io("/usuarios", {
     auth:{
@@ -7,20 +7,31 @@ const socket = io("/usuarios", {
     },
 });
 
+
+
+socket.on("usuarios_no_documento", atualizarInterfaceUsuarios);
+
+
 socket.on("connect_error", (error) => {
     alert(error)
     window.location.href = "/login/index.html";
 })
 
+
+socket.on("autenticaçao_usuario", AutenticarUsuario)
+
+export function EmitirDocumento(Dados){
+    socket.emit("documento", Dados, (texto) => {
+        WriteTexto(texto)
+    })
+}
+
 socket.on("texto_editor_cliente", (texto) =>{
     WriteTexto(texto)
 })
 
-export function EmitirDocumento(nome){
-    socket.emit("documento", nome, (texto) => {
-        WriteTexto(texto)
-    })
-}
+
+
 
 export function EmitTexto(texto, nomeDocumento){
     socket.emit("text_editor", texto, nomeDocumento);

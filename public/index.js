@@ -1,7 +1,20 @@
 import { adicionarDocumento } from  "./socker-front-index.js"
+import { ObterCookie, removerCookies } from "./utils/cookies.js";
 const listaDocumentos = document.getElementById("lista-documentos");
-const form = document.getElementById("form-adiciona-documento")
-const input = document.getElementById("input-documento")
+const form = document.getElementById("form-adiciona-documento");
+const input = document.getElementById("input-documento");
+const logout = document.getElementById("botao-logout");
+
+const tokenJWT = ObterCookie("tokenJWT");
+
+console.log(tokenJWT);
+
+
+logout.addEventListener("click", () =>{
+    removerCookies("tokenJWT")
+    alert("Usuario sair com sucesso!");
+    window.location.href = "/login/index.html";
+})
 
 form.addEventListener("submit", (e) => {
     e.preventDefault()

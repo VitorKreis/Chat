@@ -10,7 +10,7 @@ export function AutenticarLogin(socket, io) {
             const autenticado = AutenticarUsuario(senha, usuario);
 
             if(autenticado){
-                const token = gerarJwt({nomeUsuario : nome})
+                const token = gerarJwt({nomeUsuario : nome}) 
                 socket.emit("autenticado_sucesso", token)
             }else{
                 socket.emit("autenticado_error")

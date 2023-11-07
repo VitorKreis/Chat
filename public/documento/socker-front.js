@@ -8,8 +8,7 @@ const socket = io("/usuarios", {
 });
 
 
-
-socket.on("usuarios_no_documento", atualizarInterfaceUsuarios);
+socket.on("autenticaçao_usuario", AutenticarUsuario)
 
 
 socket.on("connect_error", (error) => {
@@ -17,8 +16,13 @@ socket.on("connect_error", (error) => {
     window.location.href = "/login/index.html";
 })
 
+socket.on("UsuarioConnectado", ()=> {
+    alert("Usuario ja connectado ao um documento");
+    window.location.href = "/";
+})
 
-socket.on("autenticaçao_usuario", AutenticarUsuario)
+socket.on("usuarios_no_documento", atualizarInterfaceUsuarios);
+
 
 export function EmitirDocumento(Dados){
     socket.emit("documento", Dados, (texto) => {
@@ -27,6 +31,7 @@ export function EmitirDocumento(Dados){
 }
 
 socket.on("texto_editor_cliente", (texto) =>{
+    
     WriteTexto(texto)
 })
 

@@ -7,7 +7,7 @@ const nomeDocumento = parametros.get("nome");
 const text_editor = document.getElementById("editor-texto");
 const Documento = document.getElementById("titulo-documento");
 const botao_excluir =  document.getElementById("excluir-documento")
-const listaUsuario = document.getElementById("usuarios-conectados")
+const listaUsuariosConectados = document.getElementById("usuarios-conectados");
 
 Documento.textContent = nomeDocumento || "Documento sem Nome";
 
@@ -16,10 +16,10 @@ export function AutenticarUsuario(dados){
 }
 
 export function atualizarInterfaceUsuarios(usuariosNoDocumento) {
-    listaUsuario.innerHTML = "";
-  
+    listaUsuariosConectados.innerHTML = "";
+
     usuariosNoDocumento.forEach((usuario) => {
-        listaUsuario.innerHTML += `
+      listaUsuariosConectados.innerHTML += `
         <li class="list-group-item">${usuario}</li>
       `;
     });
